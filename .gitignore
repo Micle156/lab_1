@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Виртуальное окружение
+.venv/
+venv/
+env/
+
+# Сборка и метаданные пакета
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Тесты и кэши инструментов
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Артефакты редакторов
+tempCodeRunnerFile.py
+.vscode/
+.idea/
+
+# Логи, создаваемые программой
+toolkit_error.log
+
+# ОС
+.DS_Store
+Thumbs.db
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+tempCodeRunnerFile.py
+.vscode/
+.idea/
+toolkit_error.log
+.DS_Store
+Thumbs.db
