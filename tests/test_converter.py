@@ -38,7 +38,6 @@ def test_9():
 def test_10():
     assert conv("0.9", "cm", "mM") == 9.0
 
-
 """неправильные тесты"""
 
 def test_n_1():

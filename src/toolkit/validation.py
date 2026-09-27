@@ -50,7 +50,10 @@ def check_calc(expression: str) -> None:
     
     # заменяем для отдельной проверки двух операторов в начале строки
     expression_new = expression_new.replace('*', '+')
-    if len(expression_new) > 1 and expression_new[:2] == '++':
+    if (len(expression_new) > 1 and expression_new[:2] == '++') \
+            or len(expression_new) > 2 and  expression_new.count('+++') > 0:
+        raise BinOperatorsError("лишний оператор")
+    if expression[0] == '/' or expression[0] == '*':
         raise BinOperatorsError("лишний оператор")
     
     expr_new = expression.replace('-', '+')
