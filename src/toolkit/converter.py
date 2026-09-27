@@ -65,4 +65,3 @@ def conv(value: str, from_unit: str, to_unit: str):  # функция конве
             }
 
     return slovar[to_unit]
-    """возвращение конвертированного значения из словаря"""

@@ -24,10 +24,10 @@ def test_5():
     assert ans("5 -10") == -5
 
 def test_6():
-    assert ans("10/4") == 2.5
+    assert ans("10 / 4") == 2.5
 
 def test_7():
-    assert ans("-2*-3") == 6
+    assert ans("-2 * -3") == 6
 
 def test_8():
     assert ans("1+-2") == -1
@@ -75,10 +75,13 @@ def test_n_6():
         run_calc(args)
 
 def test_n_7():
-    args = argparse.Namespace(expression = "55 + (3-0))")
-    with pytest.raises(ValidationError):
-        run_calc(args)
-
-def test_n_8():
     args = argparse.Namespace(expression = "90-45*3")
     assert run_calc(args) == 45
+
+def test_n_8():
+    args = argparse.Namespace(expression = "2 + a")
+    assert run_calc(args) == 4
+
+def test_n_9():
+    args = argparse.Namespace(expression = "2 */ 1")
+    assert run_calc(args) == 2

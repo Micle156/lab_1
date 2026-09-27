@@ -1,4 +1,4 @@
-import argparse  # модуль, разбирающий аргументы cmd
+import argparse  # модуль, разбирающий аргументы командной строки 
 
 from . import calculator, converter
 
@@ -10,7 +10,7 @@ from . import calculator, converter
 import sys
 
 from .validation import (
-    ValidationError,  # отличает ошибки пользователя от ошибок программы
+    ValidationError,  # ошибки пользователя
     check_calc,  # ловит ошибки при вводе calc
     check_convert,  # ловит ошибки при вводе converter
 )
@@ -44,7 +44,7 @@ def build_parser():
         к которой добавляется
     """
 
-    calc.add_argument("expression", nargs="?", default="", help="например 5*6")
+    calc.add_argument("expression", nargs="?", default="", help="например 2*3")
     calc.set_defaults(func=run_calc)
     """
         добавление огрумента и задание функции по умолчанию, 
@@ -100,13 +100,11 @@ def run_convert(args):
     """
     try:
         check_convert(str(args.value), args.from_unit, args.to_unit)
-        result = converter.conv(args.value, args.from_unit, args.to_unit)
-        print(result)
     except ValidationError as e:
         print(f"Ошибка ввода: {e}", file=sys.stderr)
         sys.exit(2)
-
-    # вызов функции из converter и вывод результата
+    result = converter.conv(args.value, args.from_unit, args.to_unit)
+    print(result)
 
 
 def main():
@@ -119,7 +117,6 @@ def main():
 
     try:
         args.func(args)
-
         """
             в зависимости от ввода, 
             функция вызовет run_calc или run_convert

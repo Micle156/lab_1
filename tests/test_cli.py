@@ -10,6 +10,10 @@ def run_cli(*args):
         check = False
     )
 
+def test_cli():
+    res = run_cli("--help")
+    assert res.returncode == 0
+
 def test_cli_calc():
     res = run_cli("calc", "2*2")
     assert res.returncode == 0

@@ -26,7 +26,7 @@ def tokenize(example):  # разбиение строки на отдельны�
                 token.append(number)
                 token.append(i)
                 number = ""
-            elif flag == 1:
+            elif flag == 1: # бинарный оператор после скобок
                 flag = 0
                 token.append(i)
             else:

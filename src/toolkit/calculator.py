@@ -22,7 +22,8 @@ def score(operation, num1, num2):
             sys.exit(2)
 
 
-def ans(example): # функция, которая по обратной польской нотации считает выражение
+def ans(example):
+    """функция, которая вызывает токенезацию и по ОПН вычисляет результат"""
     token = tokenize(example)
     opn = OPN(token)
     
