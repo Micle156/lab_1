@@ -4,10 +4,10 @@ from .errors import (
     BinOperatorsError,
     EmptyInputError,
     IncompatibleUnitsError,
+    NoBinOperatorError,
     UncorrectValueError,
     UnknownUnitError,
     ValidationError,
-    NoBinOperatorError,
 )
 
 UNITS = {"length": {"mm", "cm", "m", "km"},

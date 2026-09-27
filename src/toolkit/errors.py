@@ -40,6 +40,7 @@ class UncorrectValueError(ValidationError):
     """больше одной точки в числе"""
     pass
 
+
 class NoBinOperatorError(ValidationError):
-    """"""
+    """лишний оператор"""
     pass

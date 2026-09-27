@@ -39,17 +39,17 @@ lab_1/
 git clone https://github.com/Micle156/lab_1.git
 cd lab_1
 python -m venv .venv
-source .venv/bin/activate       (для Linux/MacOS)
-.venv\Scripts\activate          (для Windows cmd)
-.\.venv\Scripts\Activate.ps1    (для Windows PowerShell)
+source .venv/bin/activate           # для Linux/MacOS
+.venv\Scripts\activate              #для Windows cmd
+.\.venv\Scripts\Activate.ps1        #для Windows PowerShell
 python -m pip install -e ".[dev]"
 ```
 
 ## Использование
 ### калькулятор
 ```
-python -m toolkit calc "22-1"         (21)
-python -m toolkit calc "2+2*(14-9)"   (12)
+python -m toolkit calc "22-1"         # 21
+python -m toolkit calc "2+2*(14-9)"   # 12
 ```
 
 Особенности:
@@ -62,9 +62,9 @@ python -m toolkit calc "2+2*(14-9)"   (12)
 
 ### Конвертер
 ```
-python -m toolkit convert 100 --from km --to m  (100000)
-python -m toolkit convert 25 --from c --to f    (77.0)
-python -m toolkit convert 1.5 --from kg --to g  (1500)
+python -m toolkit convert 100 --from km --to m   # 100000
+python -m toolkit convert 25 --from c --to f     # 77.0
+python -m toolkit convert 1.5 --from kg --to g   # 1500
 ```
 
 Поддерживаются:
