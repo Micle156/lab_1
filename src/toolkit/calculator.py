@@ -29,7 +29,7 @@ def ans(example): # функция, которая по обратной пол�
     stack = []
     for i in opn:
         if i[-1].isdigit(): # число записываем в стек
-            stack.append(i)
+            stack.append(float(i))
         else:
             """
                 для операции достаем 2 последних значения
@@ -56,6 +56,9 @@ def ans(example): # функция, которая по обратной пол�
                 num2 = stack[-1]
                 stack.pop()
                 stack.pop()
-                stack.append(str(score(i, float(num1), float(num2))))
+                stack.append(score(i, float(num1), float(num2)))
                 """вызов функции score"""
-    return float(stack[0]) # возвращение результата
+
+    if stack[0] == int(stack[0]):
+        stack[0] = int(stack[0])
+    return stack[0] # возвращение результата

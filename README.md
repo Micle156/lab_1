@@ -1,8 +1,9 @@
 # toolkit
 Python-пакет с CLI, содержащий калькулятор и конвертер величин.
 
-# Структура
+## Структура
 
+```
 lab_1/                  
 ├── pyproject.toml
 ├── pytest.ini
@@ -21,9 +22,9 @@ lab_1/
     ├── test_calculator.py
     ├── test_cli.py
     └── test_converter.py
+```
 
-
-# Функции:
+## Функции:
 1) калькулятор, вычисляющий введённое выражение например:
  2+2*2 или 6 * 4 - (3+5)
 2) конвертер единиц, который переводит значения из одной единицы измерения в другую
@@ -32,23 +33,24 @@ lab_1/
 3) Сообщения, помогающие правильно ввести выражение
 
 
-# Установка
+## Установка
 Требуется python 3.9 или новее
+```
 git clone https://github.com/Micle156/lab_1.git
 cd lab_1
 python -m venv .venv
 source .venv/bin/activate       (для Linux/MacOS)
 .venv\Scripts\activate          (для Windows cmd)
 .\.venv\Scripts\Activate.ps1    (для Windows PowerShell)
-pip install -e
-pip install pytest
-pip install ruff
+python -m pip install -e ".[dev]"
+```
 
-
-# Использование
-1) калькулятор:
-    python -m toolkit calc "22-1"         (21)
-    python -m toolkit calc "2+2*(14-9)"   (12)
+## Использование
+### калькулятор
+```
+python -m toolkit calc "22-1"         (21)
+python -m toolkit calc "2+2*(14-9)"   (12)
+```
 
 Особенности:
 
@@ -58,12 +60,12 @@ pip install ruff
 - десятичные целые и дробные числа: '1.5 + 2.5'.
 - проелы игнорируются
 
-
-2) Конвертер
-    python -m toolkit convert 100 --from km --to m  (100000)
-    python -m toolkit convert 25 --from c --to f    (77.0)
-    python -m toolkit convert 1.5 --from kg --to g  (1500)
-
+### Конвертер
+```
+python -m toolkit convert 100 --from km --to m  (100000)
+python -m toolkit convert 25 --from c --to f    (77.0)
+python -m toolkit convert 1.5 --from kg --to g  (1500)
+```
 
 Поддерживаются:
 - длина (cm, m, km, mm)
@@ -76,13 +78,14 @@ pip install ruff
 - температура допустима не меньше абсолютного нуля
 
 
-# Справка
+## Справка
+```
 python -m toolkit --help
 python -m toolkit calc --help
 python -m toolkit convert --help
+```
 
-
-# Обработка ошибок
+## Обработка ошибок
 Программа проверяет данные и выводит понятные сообщения об ошибках, например:
 - деление на ноль
 - температура ниже абсолютного нуля
@@ -93,23 +96,25 @@ python -m toolkit convert --help
 2 - ошибка программы
 
 # Тестирование
+```
+python -m pytest                                       # все тесты
+python -m pytest test/test_calculator.py               # конкретный файл
+python -m pytest test/test_calculator.py::test_1       # конкретный тест
+python -m pytest tests/ -k "test_1"                    # по шаблону
+python -m pytest -v                                    # подробный
+python -m pytest -x                                    # остановиться на первой ошибке
+python -m pytest  --maxfail=N                          # остановится после N ошибок
+python -m pytest -1                      # показатьь локальные переменные при ошибках
+python -m pytest --1f                    # запустить неудачные тесты из последнего запуска
+python -m pytest --ff                    # запустить сначала неудачные, потом все остаьные
+```
 
-python -m pytest                                       (все тесты)
-python -m pytest test/test_calculator.py               (конкретный файл)
-python -m pytest test/test_calculator.py::test_1       (конкретный тест)
-python -m pytest tests/ -k "test_1"                    (по шаблону)
-python -m pytest -v                                    (подробный)
-python -m pytest -x                                    (остановиться на первой ошибке)
-python -m pytest  --maxfail=N                          (остановится после N ошибок)
-python -m pytest -1                      (показатьь локальные переменные при ошибках)
-python -m pytest --1f                    (запустить неудачные тесты из последнего запуска)
-python -m pytest --ff                    (запустить сначала неудачные, потом все остаьные)
-
-# ruf
-
-ruff check .          (проверить код)
-ruff check --fix .    (исправить безопасные проблемы)
-ruff format .         (отформатировать)
+## ruf
+```
+ruff check .          # проверить код
+ruff check --fix .    # исправить безопасные проблемы
+ruff format .         # отформатировать
+```
 
 # Зависимости
 

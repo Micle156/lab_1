@@ -44,7 +44,7 @@ def build_parser():
         к которой добавляется
     """
 
-    calc.add_argument("expression", help="например 5*6")
+    calc.add_argument("expression", nargs="?", default="", help="например 5*6")
     calc.set_defaults(func=run_calc)
     """
         добавление огрумента и задание функции по умолчанию, 
@@ -54,9 +54,9 @@ def build_parser():
         в arg.func положится функция run_calc
     """
 
-    conv.add_argument("value", help="число")
-    conv.add_argument("--from", dest="from_unit", required=True, help="исход единица")
-    conv.add_argument("--to", dest="to_unit", required=True, help="результ единица")
+    conv.add_argument("value", nargs="?", default="", help="число")
+    conv.add_argument("--from", dest="from_unit", nargs="?", default="", required=True, help="исход единица")
+    conv.add_argument("--to", dest="to_unit", nargs="?", default="", required=True, help="результ единица")
     conv.set_defaults(func=run_convert)
     """
         аналогичные действия как с calc:
@@ -130,13 +130,6 @@ def main():
             если там нет своего try
         """
         print(f"Ошибка ввода: {e}", file=sys.stderr)
-        sys.exit(2)
-    # проверка ошибок программы, не заданных в error
-    except ValueError:  # проверка конвертера на число с лишними символами
-        print("Ошибка: Некорректное числовое значение", file=sys.stderr)
-        sys.exit(2)
-    except ZeroDivisionError:
-        print("Ошибка: деление на ноль", file=sys.stderr)
         sys.exit(2)
 
 

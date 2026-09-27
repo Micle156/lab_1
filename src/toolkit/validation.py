@@ -7,6 +7,7 @@ from .errors import (
     UncorrectValueError,
     UnknownUnitError,
     ValidationError,
+    NoBinOperatorError,
 )
 
 UNITS = {"length": {"mm", "cm", "m", "km"},
@@ -22,10 +23,17 @@ CHARS_CONV = set("0123456789.-")
 def check_calc(expression: str) -> None:
     """ Проверяет выражение для calc на ошибки"""
 
-    expression = expression.replace(' ', '')
-
-    if expression == '':
+    if expression.strip() == "":
         raise EmptyInputError("Выражение пустое")
+
+    expr_new = expression.replace('/', '+').replace('*', '+')
+    expr_new = expr_new.replace('-', '+')
+    expr_new = expr_new.split('+')
+    for numeral in expr_new:
+        if numeral.strip().count(' ') > 0:
+            raise NoBinOperatorError("пропущен оператор")
+
+    expression = expression.replace(' ', '')
 
     bad = set(expression) - CHARS_CALC
     if bad:
@@ -62,14 +70,9 @@ def check_calc(expression: str) -> None:
 
     expr_new = expr_new.split('+')
     for numeral in expr_new:
-        if numeral.count('.') > 1 \
-                or (len(numeral) > 1 and numeral[0] == "0" \
-                    and numeral [1] != '.'):
+        if numeral.count('.') > 1:
             raise UncorrectValueError("некорректное число")
-    """
-        проверяем, что в числах не больше одной точки,
-        числа не начинаются с нуля
-    """
+    """проверяем, что в числах не больше одной точки"""
 
 
 def check_convert(value: str, unit1: str, unit2: str) -> None:
@@ -84,9 +87,6 @@ def check_convert(value: str, unit1: str, unit2: str) -> None:
 
     if value == "":
         raise EmptyInputError("Выражение пустое")
-
-    if len(value) > 1 and value[0] == '0' and value[1] != '.':
-        raise UncorrectValueError("некорректное число")
 
     for ind in range(len(value)):
         if value[ind] == '-' and ind != 0:

@@ -9,10 +9,10 @@ from toolkit.validation import ValidationError
 """правильные тесты"""
 
 def test_1():
-    assert ans("2+4*3") == 14.0
+    assert ans("2+4*3") == 14
 
 def test_2():
-    assert ans("100    /   5") == 20.0
+    assert ans("100    /   5") == 20
 
 def test_3():
     assert ans("6/4.0") == 1.5
@@ -21,22 +21,22 @@ def test_4():
     assert ans("2+9.34") == 11.34
 
 def test_5():
-    assert ans("5 -10") == -5.0
+    assert ans("5 -10") == -5
 
 def test_6():
     assert ans("10/4") == 2.5
 
 def test_7():
-    assert ans("-2*-3") == 6.0
+    assert ans("-2*-3") == 6
 
 def test_8():
-    assert ans("1+-2") == -1.0
+    assert ans("1+-2") == -1
 
 def test_9():
-    assert ans("(3 +4)*9") == 63.0
+    assert ans("(3 +4)*9") == 63
 
 def test_10():
-    assert ans("-(2+3)") == -5.0
+    assert ans("-(2+3)") == -5
 
 def test_11():
     assert ans("3+ (-3)") == 0
@@ -81,4 +81,4 @@ def test_n_7():
 
 def test_n_8():
     args = argparse.Namespace(expression = "90-45*3")
-    assert run_calc(args) == 45.0
+    assert run_calc(args) == 45

@@ -13,7 +13,7 @@ def run_cli(*args):
 def test_cli_calc():
     res = run_cli("calc", "2*2")
     assert res.returncode == 0
-    assert "4.0" in res.stdout
+    assert "4" in res.stdout
 
 def test_cli_convert():
     res = run_cli("convert", "300", "--from", "k", "--to", "c")
